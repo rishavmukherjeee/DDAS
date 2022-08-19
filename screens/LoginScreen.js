@@ -111,7 +111,7 @@ export const LoginScreen = ({ navigation }) => {
       {/* App info footer */}
       <View style={styles.footer}>
         <Text style={styles.footerText}>
-          Expo Firebase Starter App (based on managed workflow)
+         @DDS copyright
         </Text>
       </View>
     </>
