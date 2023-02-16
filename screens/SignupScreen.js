@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet ,Image } from 'react-native';
 import { Formik } from 'formik';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { View, TextInput, Logo, Button, FormErrorMessage } from '../components';
-import { Images, Colors, auth } from '../config';
+import { View, TextInput, Button, FormErrorMessage } from '../components';
+import { Colors, auth } from '../config';
 import { useTogglePasswordVisibility } from '../hooks';
 import { signupValidationSchema } from '../utils';
 
@@ -34,7 +34,10 @@ export const SignupScreen = ({ navigation }) => {
       <KeyboardAwareScrollView enableOnAndroid={true}>
         {/* LogoContainer: consits app logo and screen title */}
         <View style={styles.logoContainer}>
-          <Logo uri={Images.logo} />
+        <Image
+        style={styles.tinyLogo}
+        source={require('../images/eye.jpg')}
+      />
           <Text style={styles.screenTitle}>Create a new account!</Text>
         </View>
         {/* Formik Wrapper */}
@@ -162,5 +165,8 @@ const styles = StyleSheet.create({
     marginTop: 16,
     alignItems: 'center',
     justifyContent: 'center'
+  },tinyLogo:{
+    width:250,
+    height:250
   }
 });

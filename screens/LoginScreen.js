@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Image } from 'react-native';
 import { Formik } from 'formik';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { View, TextInput, Logo, Button, FormErrorMessage } from '../components';
-import { Images, Colors, auth } from '../config';
+import { View, TextInput, Button, FormErrorMessage } from '../components';
+import { Colors, auth } from '../config';
 import { useTogglePasswordVisibility } from '../hooks';
 import { loginValidationSchema } from '../utils';
 
@@ -26,7 +26,10 @@ export const LoginScreen = ({ navigation }) => {
         <KeyboardAwareScrollView enableOnAndroid={true}>
           {/* LogoContainer: consits app logo and screen title */}
           <View style={styles.logoContainer}>
-            <Logo uri={Images.logo} />
+          <Image
+        style={styles.tinyLogo}
+        source={require('../images/eye.jpg')}
+      />
             <Text style={styles.screenTitle}>Welcome back!</Text>
           </View>
           <Formik
@@ -89,22 +92,19 @@ export const LoginScreen = ({ navigation }) => {
                 <Button style={styles.button} onPress={handleSubmit}>
                   <Text style={styles.buttonText}>Login</Text>
                 </Button>
+                
               </>
             )}
           </Formik>
           {/* Button to navigate to SignupScreen to create a new account */}
-          <Button
-            style={styles.borderlessButtonContainer}
-            borderless
-            title={'Create a new account?'}
-            onPress={() => navigation.navigate('Signup')}
-          />
+          
           <Button
             style={styles.borderlessButtonContainer}
             borderless
             title={'Forgot Password'}
             onPress={() => navigation.navigate('ForgotPassword')}
           />
+          
         </KeyboardAwareScrollView>
       </View>
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: '#131259',
     padding: 10,
     borderRadius: 8
   },
@@ -162,5 +162,9 @@ const styles = StyleSheet.create({
     marginTop: 16,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  tinyLogo:{
+    width:250,
+    height:250
   }
 });
